@@ -1,0 +1,36 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body{
+
+    background: map-get($colors, "gray" );
+    margin: 0;
+    padding: 0;
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #e0e0e0 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    border: 2px double #ffffff;
+  }
