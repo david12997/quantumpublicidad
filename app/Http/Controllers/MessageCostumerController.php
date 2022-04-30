@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Place;
+use App\Models\MessageCostumer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class PlaceController extends Controller
+class MessageCostumerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $places = Place::paginate(20);
-        return \response($places);
+        $messages = MessageCostumer::paginate(20);
+        return \response($messages);
     }
 
     /**
@@ -36,16 +37,33 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+
+            'name_costumer'=>['required'],
+            'email_costumer'=>['required'],
+            'message_costumer'=>['required']
+        ]);
+
+        if($validator->fails()){
+
+            echo json_encode(["response"=>"something wrong check your data"]);
+
+        }else{
+
+            MessageCostumer::create($request->all());
+            echo json_encode(["response"=>"insert success"]);
+        }
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\MessageCostumer  $messageCostumer
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show(MessageCostumer $messageCostumer)
     {
         //
     }
@@ -53,10 +71,10 @@ class PlaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\MessageCostumer  $messageCostumer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit(MessageCostumer $messageCostumer)
     {
         //
     }
@@ -65,10 +83,10 @@ class PlaceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\MessageCostumer  $messageCostumer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $place)
+    public function update(Request $request, MessageCostumer $messageCostumer)
     {
         //
     }
@@ -76,10 +94,10 @@ class PlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\MessageCostumer  $messageCostumer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Place $place)
+    public function destroy(MessageCostumer $messageCostumer)
     {
         //
     }

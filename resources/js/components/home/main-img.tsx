@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { config } from "../../env";
 
 const MainImgStyles = styled.div`
 
@@ -66,11 +67,11 @@ export const MainImg = ():JSX.Element=>{
             <div className="carousel-item active">
 
                 <img onClick={()=> Navigate('/vallas')} className="desktop"  width="100%"
-                    src="images/img-main-1.png"
+                    src={ config.domain+"/images/img-main-1.png"}
                     alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
                 />
                 <img onClick={()=>Navigate('/vallas')} className="mobile"  width="100%"
-                    src="images/img-main-mobile-1.png"
+                    src={ config.domain+"/images/img-main-mobile-1.png"}
                     alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
                 />
 
@@ -78,25 +79,25 @@ export const MainImg = ():JSX.Element=>{
 
             <div className="carousel-item ">
 
-                <img  className="desktop"  width="100%"
-                    src="images/img-main-2.png"
-                    alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
+                <img onClick={()=> Navigate('/servicios')} className="desktop"  width="100%"
+                    src={ config.domain+"/images/img-main-2.png"}
+                    alt="impresion a gan escala 30% de descuento"
                 />
-                <img  className="mobile"  width="100%"
-                    src="images/img-main-mobile-2.png"
-                    alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
+                <img onClick={()=> Navigate('/servicios')} className="mobile"  width="100%"
+                    src={ config.domain+"/images/img-main-mobile-2.png"}
+                    alt="impresion a gan escala 30% de descuento"
                 />
 
             </div>
             <div className="carousel-item ">
 
-                <img  className="desktop"  width="100%"
-                    src="images/img-main-3.png"
-                    alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
+                <img onClick={()=> Navigate('/servicios')}  className="desktop"  width="100%"
+                    src={ config.domain+"/images/img-main-3.png"}
+                    alt="material p.o.p. 15% de descuento"
                 />
-                <img  className="mobile"  width="100%"
-                    src="images/img-main-mobile-3.png"
-                    alt="vallas publicitarias hasta 20% off ubicadas en lugares estrategicos"
+                <img onClick={()=> Navigate('/servicios')}  className="mobile"  width="100%"
+                    src={ config.domain+"/images/img-main-mobile-3.png"}
+                    alt="material p.o.p. 15% de descuento"
                 />
 
             </div>

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\BillboardController;
+use App\Http\Controllers\MessageCostumerController;
 use App\Http\Controllers\PlaceBillboardDataController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\StorieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
@@ -30,7 +32,8 @@ Route::middleware(['access.api'])->group(function(){
     Route::resource('billboard',BillboardController::class);
     Route::resource('place', PlaceController::class);
     Route::resource('service',ServiceController::class);
-
+    Route::resource('storie',StorieController::class);
+    Route::resource('message',MessageCostumerController::class);
 
 });
 

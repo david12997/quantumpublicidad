@@ -109,6 +109,7 @@ const SearchBillboardStyles = styled.div`
         border-radius:5px ;
         box-shadow:0px 0px 7px rgba(0,0,0,0.3);
         width:100% ;
+        background-color:white ;
     }
 
     .label-maps{

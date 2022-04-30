@@ -11,6 +11,7 @@ const CardStoryStyles = styled.div`
     margin-bottom:10px ;
     margin-left:5px ;
     margin-right:5px ;
+    cursor: pointer;
 
     & .img-story{
 

@@ -25,6 +25,7 @@ class CreateBillboardTable extends Migration
             $table->integer('price');
             $table->mediumText('georeference');
             $table->longText('media')->nullable();
+            $table->string('available');
         });
     }
 

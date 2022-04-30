@@ -39,19 +39,50 @@ export class Maps {
     public AddMarker(options:any, item:any):void{
 
         const media = JSON.parse(item.media);
+
         const ContentBillboard = `
+
+        <style>
+            .container-mine{
+
+                width:100%
+            }
+
+            .img-mine{
+
+                width:100%;
+            }
+
+            @media(min-width:800px){
+
+                .container-mine{
+
+                    width:40%;
+                }
+                .img-mine{
+
+                    width:310px;
+                }
+            }
+        </style>
         <div class="d-flex justify-content-center align-items-center">
-            <h4>${item.address}</h4>
+            <h5>${item.address}</h5>
         </div>
-        <hr>
+
         <div style="font-size:18px;" class="d-flex justify-content-center flex-wrap">
 
-            <div class="d-flex justify-content-center style="width:100%" class="m-4">
-                <img style="width:350px" src="${media[0].images.foto1}"/>
+            <div class="container-mine m-3" >
+                <img class="img-mine"  src="${media[0].images.foto1}"/>
+                <hr>
+                <h5>Georeferencia:</h5>
+                <b>${item.georeference}</b>
+                <hr>
+                <h5>Descripcion:</h5>
+                <b>${item.description}</b>
+                <hr>
             </div>
 
-            <div style="width:100%" class="m-4">
-                <hr>
+            <div class="container-mine m-3" >
                <h5>Direccion:</h5>
                <b>${item.address}</b>
                <hr>
@@ -64,20 +95,13 @@ export class Maps {
                <h5>Precio:</h5>
                <b style="color:green;">$ ${ new Intl.NumberFormat().format(Math.ceil(parseInt(item.price)))} COP</b>
                <hr>
-               <h5>Georeferencia:</h5>
-               <b>${item.georeference}</b>
-               <hr>
-               <h5>Descripcion:</h5>
-               <b>${item.description}</b>
-               <hr>
+                <div  class="d-grid gap-2">
+                    <div style="font-size:20px;" class="btn btn-success text-white">Contactar con ventas</div>
+                </div>
 
             </div>
 
         </div>
-        <div  class="d-grid gap-2">
-            <div style="font-size:20px;" class="btn btn-success text-white">Contactar con ventas</div>
-        </div>
-
 
         `;
 
@@ -89,9 +113,12 @@ export class Maps {
             const screenBillboard = new google.maps.InfoWindow({
 
                 content:ContentBillboard,
-                maxWidth:800
+                maxWidth:1000
             })
-            this.MarkerInfo(this.marker,item,screenBillboard)
+            this.MarkerInfo(this.marker,item,screenBillboard);
+            this.map.addListener('click',()=>{
+                screenBillboard.close();
+            })
 
         })
         .catch((error:any)=>console.log(error));

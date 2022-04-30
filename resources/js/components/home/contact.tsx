@@ -2,6 +2,7 @@ import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-sv
 import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { config } from "../../env";
 
@@ -23,6 +24,7 @@ const ContactStyles = styled.div`
         display:flex;
         color: #6a6a6a;
         font-size:20px ;
+        cursor: pointer;
     }
 
     & .container-contact > .title >.link{
@@ -89,10 +91,12 @@ const ContactStyles = styled.div`
 
 export const Contact = ():JSX.Element =>{
 
+    const Navigate = useNavigate();
+
     return<ContactStyles>
         <div className="container-contact">
             <div className="title">
-                <b>CONTACTO</b> <div className="link text-secondary"> Ver contacto</div>
+                <b>CONTACTO</b> <div onClick={()=>Navigate('/contacto')} className="link text-secondary"> Ver contacto</div>
             </div>
             <div className="data-contact">
                 <div className="data">

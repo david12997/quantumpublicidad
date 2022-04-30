@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Billboard extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = 'Billboard';
-    protected $filliable = [
+    protected $fillable = [
 
-        'id_billboard',
         'address',
         'type',
         'latitude',
@@ -22,7 +22,8 @@ class Billboard extends Model
         'size',
         'price',
         'georeference',
-        'media'
+        'media',
+        'available'
     ];
 
     protected $primaryKey = 'id_billboard';

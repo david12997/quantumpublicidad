@@ -50,4 +50,10 @@ export class DataApi{
         return this.Get(url);
     }
 
+    public GetStories(){
+
+        const url = 'api/storie';
+        return this.Get(url);
+    }
+
 }

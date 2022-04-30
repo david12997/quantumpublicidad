@@ -18,15 +18,19 @@ body{
   * {
     scrollbar-width: auto;
     scrollbar-color: #e0e0e0 #ffffff;
+
   }
+
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 11px;
+    border-radius: 30px;
   }
 
   *::-webkit-scrollbar-track {
     background: #ffffff;
+    border-radius: 30px;
   }
 
   *::-webkit-scrollbar-thumb {

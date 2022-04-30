@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { config } from "../../env";
 import { Btn1 } from "../common/btn1";
 
 const AboutStyles = styled.div`
@@ -77,7 +78,7 @@ export const About = ():JSX.Element =>{
             <div className="title"><b>SOBRE QUANTUM PUBLICIDAD</b></div>
             <div className="content">
                 <div className="logo">
-                    <img width="100%" src="images/logo-background.png" alt="logo quantum publiidad" />
+                    <img width="100%" src={ config.domain+"/images/logo-background.png"} alt="logo quantum publiidad" />
                 </div>
                 <div className="texts-btn">
                     <p>

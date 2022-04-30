@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class PlaceBillboardData extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = 'Place_Billboard_data';
 
-    protected $filliable = [
+    protected $fillable = [
 
-        'id_place',
-        'Bucaramanga',
+        'Place',
         'media_place',
+        'available_place',
         'id_billboard',
         'address',
         'type',
@@ -26,6 +27,7 @@ class PlaceBillboardData extends Model
         'size',
         'price',
         'georeference',
-        'media'
+        'media',
+        'available_billboard'
     ];
 }

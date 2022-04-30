@@ -14,7 +14,8 @@ export const theme = {
         gray:'#EBEBEB',
         orange:'#CB4F08',
         white:'white',
-        black:'black'
+        black:'black',
+        gray_black:'#6A6A6A'
 
     },
     areas_home:`
@@ -31,13 +32,26 @@ export const theme = {
             "search search"
 
     `,
+    areas_service:`
+            "navabr navbar"
+            "header header"
+            "service service"
+            "footer footer"
+    `,
+    areas_contact:`
+            "navbar navbar"
+            "header header"
+            "form form"
+            "contact contact"
+            "footer footer"
+
+    `
 }
-
-
 interface PropsPageStyle{
 
     page:string
 }
+
 const PageStyles = styled.div<PropsPageStyle>`
 
     width:100%;
@@ -59,19 +73,26 @@ const PageStyles = styled.div<PropsPageStyle>`
                 overflow-y:hidden ;
 
             `;
+            case 'service': return css`
+
+                grid-template-areas:${ ({theme})=>theme.areas_service};
+            `;
+            case 'contact': return css`
+
+                grid-template-areas:${ ({theme})=>theme.areas_contact};
+            `;
         }
     }}
 
-
-
-
 `;
+
 
 type PropsPage = {
 
     page:string,
     children:any
 }
+
 export const Page = (props:PropsPage):JSX.Element=>{
 
     const [navMobile, setNavMobile] = useState<boolean>(false);
@@ -79,17 +100,18 @@ export const Page = (props:PropsPage):JSX.Element=>{
 
     useEffect(()=>{
 
-        return()=>{
+        return()=>setNavMobile(false);
 
-            setNavMobile(false);
-        }
     },[])
 
 
     return<PageStyles page={props.page}>
 
+
         <NavMobile page={props.page} ref={ref} status={navMobile} setNavMobile={setNavMobile}></NavMobile>
         <Nav page={props.page} screenMobile={ref} status={navMobile} setNavMobile={setNavMobile}></Nav>
         {props.children}
+
+
     </PageStyles>
 }

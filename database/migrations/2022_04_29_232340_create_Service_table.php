@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuccessStorieTable extends Migration
+class CreateServiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateSuccessStorieTable extends Migration
      */
     public function up()
     {
-        Schema::create('Success_storie', function (Blueprint $table) {
-            $table->integer('id_storie')->primary();
+        Schema::create('Service', function (Blueprint $table) {
+            $table->integer('id_service')->primary();
             $table->string('name');
-            $table->string('description');
-            $table->longText('media');
+            $table->mediumText('description');
+            $table->mediumText('short_description');
+            $table->longText('media')->nullable();
+            $table->string('highlight');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateSuccessStorieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Success_storie');
+        Schema::dropIfExists('Service');
     }
 }

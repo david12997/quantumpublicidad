@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { config } from "../../env";
+import { DataApi } from "../../services/DataApi";
 import { CardStory } from "./card-story";
 
 const SuccessStoriesStyles = styled.div`
@@ -57,19 +59,88 @@ const SuccessStoriesStyles = styled.div`
     }
 `;
 
-export const SuccessStories = ():JSX.Element =>{
+type PropsSuccessStorie = {
+
+    modal:any,
+
+}
+export const SuccessStories = (props:PropsSuccessStorie):JSX.Element =>{
+
+    const [storie, setStorie] = useState<null | any[]>(null);
+
+    useEffect(()=>{
+
+        const DataStories = new DataApi(config.api.key,config.domain);
+        DataStories.GetStories().then(response=>{
+
+            setStorie(response.data.data);
+        })
+        .catch((error:any)=>console.log(error));
+
+        return()=>{
+
+            setStorie(null);
+        }
+
+    },[]);
+
+
+    const PrintSuccessStorie = (item:any):void=>{
+
+        const modal = props.modal.current;
+        const close = modal.children[0].childNodes[0].childNodes[0];
+
+        const description = modal.children[0].childNodes[1].childNodes[2].childNodes[1];
+        const title =modal.children[0].childNodes[1].childNodes[0].childNodes[0];
+        const img = modal.children[0].childNodes[1].childNodes[2].childNodes[0].childNodes[0];
+
+        const media = JSON.parse(item.media);
+
+        close.addEventListener('click',()=>modal.classList.add('d-none'));
+        console.log(item);
+
+        description.innerHTML = item.description;
+        title.innerHTML = item.name;
+        img.src=media[0].images.foto1;
+
+        modal.classList.remove('d-none');
+
+
+    }
 
     return<SuccessStoriesStyles>
+
+
         <div className="container-stories">
             <div className="title">
-                <b>CASOS DE EXITO </b> <div className="link text-secondary"> Ver campañas</div>
+                <b>CASOS DE EXITO </b>
             </div>
             <div className="stories">
-                <CardStory img="images/storie-1.png" alt="imagen caso de exito" text="Ver ahora" />
-                <CardStory img="images/storie-2.png" alt="imagen caso de exito" text="Ver ahora" />
-                <CardStory img="images/storie-3.png" alt="imagen caso de exito" text="Ver ahora" />
+                {
+                    storie === null
+                    ?
+                    <div style={{width:'100%'}} className="d-flex justify-content-center align-items-center">
+                        <div style={{width:'250px',height:'250px'}} className="spinner-grow text-secondary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    :
+                    storie.map((item:any,index:number)=>{
+
+                        const img = JSON.parse(item.media)[0].images.foto1
+                        return<span  key={index} onClick={()=>PrintSuccessStorie(item)}>
+                                <CardStory img={img} alt="imagen caso de exito" text="Ver ahora" />
+                            </span>
+                    })
+
+                }
+
+
             </div>
         </div>
 
     </SuccessStoriesStyles>
 }
+
+
+

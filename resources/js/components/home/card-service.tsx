@@ -11,6 +11,7 @@ const CardServiceStyles = styled.div`
     margin-bottom:10px ;
     margin-left:0.5% ;
     margin-right:0.5% ;
+    cursor: pointer;
 
     & .img-service{
 

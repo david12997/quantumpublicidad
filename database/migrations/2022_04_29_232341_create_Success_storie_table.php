@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlaceTable extends Migration
+class CreateSuccessStorieTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePlaceTable extends Migration
      */
     public function up()
     {
-        Schema::create('Place', function (Blueprint $table) {
-            $table->integer('id_place')->primary();
+        Schema::create('Success_storie', function (Blueprint $table) {
+            $table->integer('id_storie')->primary();
             $table->string('name');
-            $table->longText('media')->nullable();
+            $table->mediumText('description');
+            $table->longText('media');
+            $table->string('highlight');
         });
     }
 
@@ -27,6 +29,6 @@ class CreatePlaceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Place');
+        Schema::dropIfExists('Success_storie');
     }
 }

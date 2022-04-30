@@ -13,5 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+
 Route::view('/','home')->name('home');
 Route::view('/vallas','billboard')->name('billboard');
+Route::view('/servicios','services')->name('services');
+Route::view('/contacto','contact')->name('contact');

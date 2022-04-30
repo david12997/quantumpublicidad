@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { config } from "../../env";
 
 const FooterStyles = styled.div`
 
@@ -64,9 +65,9 @@ export const Footer = (): JSX.Element =>{
     return <FooterStyles>
         <div className="mapa-del-sitio">
             <p className="text-primary">Mapa del sitio</p>
-            <p>Inicio</p>
-            <p>Servicios</p>
-            <p>Contacto</p>
+            <p onClick={()=>Navigate('/')}>Inicio</p>
+            <p onClick={()=>Navigate('/servicios')}>Servicios</p>
+            <p onClick={()=>Navigate('/contacto')}>Contacto</p>
             <p onClick={()=>Navigate('/vallas')} className="text-secondary">Buscador de llantas</p>
         </div>
         <div className="quantum">
@@ -76,7 +77,7 @@ export const Footer = (): JSX.Element =>{
             <p>Términos y condiciones</p>
         </div>
         <div className="logo">
-            <img width="100%" src="images/logo-background.png" alt="logo quantum publicidad"/>
+            <img width="100%" src={ config.domain+"/images/logo-background.png"} alt="logo quantum publicidad"/>
         </div>
     </FooterStyles>
 }

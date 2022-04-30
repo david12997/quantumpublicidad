@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Place;
+use App\Models\Storie;
 use Illuminate\Http\Request;
 
-class PlaceController extends Controller
+class StorieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $places = Place::paginate(20);
-        return \response($places);
+        $stories = Storie::paginate(20);
+        return \response($stories);
     }
 
     /**
@@ -42,10 +42,10 @@ class PlaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Storie  $storie
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show(Storie $storie)
     {
         //
     }
@@ -53,10 +53,10 @@ class PlaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Storie  $storie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit(Storie $storie)
     {
         //
     }
@@ -65,10 +65,10 @@ class PlaceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Storie  $storie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $place)
+    public function update(Request $request, Storie $storie)
     {
         //
     }
@@ -76,10 +76,10 @@ class PlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Place  $place
+     * @param  \App\Models\Storie  $storie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Place $place)
+    public function destroy(Storie $storie)
     {
         //
     }

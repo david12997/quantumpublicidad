@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { config } from "../../env";
 import { Btn1 } from "./btn1";
 import { ToggleNavMobile } from "./nav-mobile";
 
@@ -88,7 +89,7 @@ export const Nav = (props:PropsNav):JSX.Element =>{
     return<NavStyle>
 
         <div className="logo">
-            <img width="100%" src="images/logo-name-2.png" alt="logo quantum publicidad" />
+            <img onClick={()=>Navigate('/')} width="100%" src={config.domain+"/images/logo-name-2.png"} alt="logo quantum publicidad" />
         </div>
 
         <div className="mobile">
@@ -103,10 +104,10 @@ export const Nav = (props:PropsNav):JSX.Element =>{
             <div onClick={()=>Navigate('/')} className={props.page === 'home' ? 'text-dark option-nav' : 'option-nav'}>
                 <b>Inicio</b>
             </div>
-            <div className="option-nav">
+            <div  onClick={()=>Navigate('/servicios')} className={props.page === 'service' ? 'text-dark option-nav' : 'option-nav'}>
                 <b>Servicios</b>
             </div>
-            <div className="option-nav" >
+            <div  onClick={()=>Navigate('/contacto')} className={props.page === 'contact' ? 'text-dark option-nav' : 'option-nav'} >
                 <b>Contacto</b>
             </div>
             <span onClick={()=>Navigate('/vallas')}>

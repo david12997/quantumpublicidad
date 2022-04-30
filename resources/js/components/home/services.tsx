@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { DataApi } from "../../services/DataApi";
 import { config } from "../../env";
 import { CardService } from "./card-service";
+import { useNavigate } from "react-router";
+
 const ServicesStyle = styled.div`
 
     grid-area:services;
@@ -21,6 +23,7 @@ const ServicesStyle = styled.div`
         display:flex;
         color: #6a6a6a;
         font-size:20px ;
+        cursor: pointer;
     }
 
     & .container-servicios > .title > .link{
@@ -64,24 +67,17 @@ const ServicesStyle = styled.div`
 export const Services = ():JSX.Element =>{
 
     const [service, setService] = useState<null | any[]>(null);
-    const images:string[] = [
-        'images/service-4.png',
-        'images/service-2.png',
-        'images/service-3.png',
-        'images/service-1.png'
-    ];
+    const Navigate = useNavigate();
+
 
     useEffect(()=>{
 
         const DataServices = new DataApi('36963',config.domain);
         DataServices.GetServices().then(response=>{
 
-            setService(response.data.data.filter((item:any,index:number)=>item.id_service > 4 && item))
+            setService(response.data.data.filter((item:any,index:number)=>item.highlight === 'true' && item))
 
-        }).catch(error=>{
-
-            console.log(error);
-        });
+        }).catch((error:any)=>console.log(error));
 
 
         return()=>{
@@ -94,7 +90,7 @@ export const Services = ():JSX.Element =>{
     return<ServicesStyle>
         <div className="container-servicios">
             <div className="title">
-                <b>SERVICIOS</b> <div className="link text-secondary"> Ver servicios</div>
+                <b>SERVICIOS</b> <div onClick={()=>Navigate('/servicios')} className="link text-secondary"> Ver servicios</div>
             </div>
             <div className="servicios">
                 {
@@ -108,15 +104,14 @@ export const Services = ():JSX.Element =>{
                     :
                     service.map((item:any,index:number)=>{
 
-                        item.media=images[index];
-                        return<CardService
-                            key={index}
-                            img={item.media}
+                        return<span key={index} onClick={()=>Navigate('/servicios')}><CardService
+
+                            img={JSON.parse(item.media)[0].images.foto1}
                             alt="servicios quantum publicidad"
-                            text={item.description}
+                            text={item.short_description}
                             title={item.name}
 
-                        />
+                        /></span>
                     })
                 }
             </div>

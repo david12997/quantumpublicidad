@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Storie extends Model
 {
     use HasFactory;
     public $timestamps = false;
 
-    protected $table = 'Service';
+    protected $table = 'Success_storie';
 
     protected $fillable = [
 
@@ -20,5 +20,5 @@ class Service extends Model
         'highlight'
     ];
 
-    protected $primaryKey = 'id_service';
+    protected $primaryKey = 'id_storie';
 }
