@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { config } from "../../env";
 import { Btn1 } from "../common/btn1";
+import { Mision } from "./mision";
+import { Vision } from "./vision";
 
 const AboutStyles = styled.div`
 
@@ -31,17 +33,29 @@ const AboutStyles = styled.div`
         border-radius: 8px;
         background: ${({theme})=>theme.colors.white};
         padding:20px ;
+
+    }
+
+    & .container-about > .content > .about{
+
         display:flex ;
         flex-wrap:wrap ;
         justify-content:space-between ;
     }
-    & .container-about > .content > .texts-btn{
+
+    & .container-about > .content > .mision, .vision{
+
+        width:100%;
+    }
+
+
+    & .container-about > .content > .about > .texts-btn{
 
         width:100%;
         font-size:17px ;
         color:#6a6a6a;
     }
-    & .container-about > .content > .logo{
+    & .container-about > .content > .about > .logo{
 
         width:100%;
     }
@@ -56,15 +70,16 @@ const AboutStyles = styled.div`
             margin-left:10%;
             margin-top:35px ;
         }
-            & .container-about > .content > .texts-btn{
+        & .container-about > .content > .about > .texts-btn{
 
             width:50%;
         }
-        & .container-about > .content > .logo{
+        & .container-about > .content > .about > .logo{
 
-            width:24%;
-            margin-left:5%
+            width:35%;
+            margin-left:3%
         }
+
     }
 `;
 
@@ -77,24 +92,47 @@ export const About = ():JSX.Element =>{
         <div className="container-about">
             <div className="title"><b>SOBRE QUANTUM PUBLICIDAD</b></div>
             <div className="content">
-                <div className="logo">
-                    <img width="100%" src={ config.domain+"/images/logo-background.png"} alt="logo quantum publiidad" />
+                <div className="about">
+
+                    <div className="logo">
+                        <img width="100%" src={ config.domain+"/images/logo-background.png"} alt="logo quantum publiidad" />
+                    </div>
+                    <div className="texts-btn">
+                        <p>
+                        En <span className="text-primary">Quantum</span> ofrecemos servicio especializado en
+                        <span className="text-primary">PUBLICIDAD EXTERIOR/ INTERIOR</span>,
+                        liderando, comercializando y cumpliendo con elevados estándares de calidad para
+                        satisfacer los requerimientos y necesidades de nuestros clientes.
+                        Nuestras <span className="text-primary">vallas publicitarias</span> se encuentran
+                        en la región de Santander,
+                        en los principales municipios del departamento, ubicadas en los mejores
+                        puntos visuales a nivel exterior, en las avenidas más transitadas y <span className="text-primary">puntos
+                        de enfoque estratégicos</span> para la exhibición de su publicidad.
+
+
+                        </p>
+                        <p>
+                            Visita nuestro buscador de
+                            <span className="text-primary"> vallas publicitarias</span> con georeferencias
+                            en tiempo real
+                        </p>
+                        <span  onClick={()=>Navigate('/vallas')}><Btn1 text="BUSCAR  VALLAS" width='300px' height='50px'/></span>
+                    </div>
+
                 </div>
-                <div className="texts-btn">
-                    <p>
-                        Nuestra empresa te ofrece servicios de
-                        <span className="text-primary"> impresion digital </span>
-                        y espacios con geo-referencias influyentes, ampliamente demandados
-                        a precios muy comodos y lo mejor de todo
-                        <span className="text-primary"> ¡Sin intermediarios!</span>
-                    </p>
-                    <p>
-                        Visita nuestro buscador de
-                        <span className="text-primary"> vallas publicitarias</span> con georeferencias
-                        en tiempo real
-                    </p>
-                   <span  onClick={()=>Navigate('/vallas')}><Btn1 text="BUSCAR  VALLAS" width='300px' height='50px'/></span>
+                <br></br>
+                <hr></hr>
+                <br></br>
+                <div className="mision">
+                    <Mision></Mision>
                 </div>
+                <br></br>
+                <hr></hr>
+                <br></br>
+                <div className="vision">
+                    <Vision></Vision>
+                </div>
+
 
             </div>
         </div>

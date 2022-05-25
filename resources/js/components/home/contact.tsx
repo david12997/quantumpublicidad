@@ -56,6 +56,11 @@ const ContactStyles = styled.div`
         border-radius:8px ;
     }
 
+    & p{
+
+        cursor: pointer;
+    }
+
     @media(min-width:800px){
 
         & .container-contact{
@@ -92,6 +97,12 @@ const ContactStyles = styled.div`
 export const Contact = ():JSX.Element =>{
 
     const Navigate = useNavigate();
+    const message = 'Hola estoy interesad@ en los servicios de la pagina quantumpublicidad.com'
+
+    const GoTo = (url:string):void =>{
+
+        window.location.href =url;
+    }
 
     return<ContactStyles>
         <div className="container-contact">
@@ -101,21 +112,21 @@ export const Contact = ():JSX.Element =>{
             <div className="data-contact">
                 <div className="data">
                     <p ><FontAwesomeIcon  icon={faEnvelope}/> <b className="ml-2">ventas@quantumpublicidad.com</b></p>
-                    <p ><FontAwesomeIcon  icon={faWhatsapp}/> <b className="ml-2">320 123 4567 - 30 123 4567</b></p>
-                    <p ><FontAwesomeIcon  icon={faPhone}/> <b className="ml-2">1234567 - 765432</b></p>
-                    <p ><FontAwesomeIcon  icon={faFacebook}/> <b className="ml-2">Quantum publcidad</b></p>
-                    <p ><FontAwesomeIcon  icon={faInstagram}/> <b className="ml-2">@quantumpublciidad</b></p>
-                    <p ><FontAwesomeIcon  icon={faLocationDot}/> <b className="ml-2">Cra 12b # 12 - 34</b></p>
+                    <p onClick={()=>GoTo(`https://api.whatsapp.com/send/?phone=573012543817&text=${message}`)}><FontAwesomeIcon  icon={faWhatsapp}/> <b className="ml-2">301 254 3817 - 301 254 3817</b></p>
+                    <p onClick={()=>GoTo('https://www.facebook.com/Quantum-Publicidad-103990475645854')}><FontAwesomeIcon  icon={faFacebook}/> <b className="ml-2">Quantum publicidad</b></p>
+                    <p onClick={()=>GoTo('https://www.instagram.com/publicidadquantum/')} ><FontAwesomeIcon  icon={faInstagram}/> <b className="ml-2">@publicidadquantum</b></p>
+                    <p ><FontAwesomeIcon  icon={faLocationDot}/> <b className="ml-2">Carrera 56 #51-06</b></p>
+                    <p ><FontAwesomeIcon  icon={faLocationDot}/> <b className="ml-2">Bucaramanga-Santander</b></p>
                 </div>
                 <div className="map">
                     <img style={{borderRadius:'8px'}} width="100%"
                          src={`
                             https://maps.googleapis.com/maps/api/staticmap?
-                            center=7.11483931635512,-73.13061159563954
-                            &zoom=13
+                            center=7.1176085,-73.1005656
+                            &zoom=15
                             &size=280x280
                             &maptype=roadmap
-                            &markers=color:red%7Clabel:Q%7C7.11483931635512,-73.13061159563954
+                            &markers=color:red%7Clabel:Q%7C7.1176085,-73.1005656
                             &key=${config.maps.apiKey}
                          `}
                          alt="ubicacion mapa google maps"

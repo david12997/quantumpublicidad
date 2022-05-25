@@ -67,12 +67,13 @@ export const Footer = (): JSX.Element =>{
             <p className="text-primary">Mapa del sitio</p>
             <p onClick={()=>Navigate('/')}>Inicio</p>
             <p onClick={()=>Navigate('/servicios')}>Servicios</p>
+            <p onClick={()=>Navigate('/casos')}>Casos</p>
             <p onClick={()=>Navigate('/contacto')}>Contacto</p>
-            <p onClick={()=>Navigate('/vallas')} className="text-secondary">Buscador de llantas</p>
+            <p onClick={()=>Navigate('/vallas')} className="text-secondary">Buscador de vallas</p>
         </div>
         <div className="quantum">
             <p className="text-primary">Quantum</p>
-            <p>Cra 12 # 12- 34</p>
+            <p>Carrera 56 #51-06</p>
             <p>ventas@quantumpublicidad.com</p>
             <p>Términos y condiciones</p>
         </div>

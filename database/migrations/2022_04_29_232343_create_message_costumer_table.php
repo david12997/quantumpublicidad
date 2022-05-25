@@ -16,7 +16,7 @@ class CreateMessageCostumerTable extends Migration
         Schema::create('message_costumer', function (Blueprint $table) {
             $table->bigInteger('id_message')->primary();
             $table->string('name_costumer');
-            $table->string('email_costumer');
+            $table->string('email_costumer')->unique();
             $table->mediumText('message_costumer');
         });
     }

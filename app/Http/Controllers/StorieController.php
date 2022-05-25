@@ -14,7 +14,7 @@ class StorieController extends Controller
      */
     public function index()
     {
-        $stories = Storie::paginate(20);
+        $stories = Storie::paginate(50);
         return \response($stories);
     }
 

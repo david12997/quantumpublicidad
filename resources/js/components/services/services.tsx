@@ -114,7 +114,7 @@ export const Services = ():JSX.Element =>{
 
     return<ServicesStyles>
         {
-            services === null
+            (services === null || services === undefined)
             ?
             <div  style={{width:'100%'}} className="d-flex justify-content-center align-items-center">
                 <div style={{width:'250px',height:'250px'}} className="spinner-grow text-secondary" role="status">

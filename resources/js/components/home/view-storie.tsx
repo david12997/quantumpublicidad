@@ -62,6 +62,7 @@ const ViewStorieStyles = styled.div<PropsViesStorieStyles>`
 
 export const ViewStorie = React.forwardRef((props,ref)=>{
 
+    const message =`Hola estoy interesad@ en la vallas publicitarias de la pagina quantumpublicidad.com`;
 
     return<ViewStorieStyles className="d-none" ref={ref}>
 
@@ -86,6 +87,10 @@ export const ViewStorie = React.forwardRef((props,ref)=>{
                     <div className="text-mygray mt-4 mb-3">
                         <b>text here</b>
                     </div>
+                    <div  className="d-grid gap-2">
+                        <a href={`https://api.whatsapp.com/send/?phone=573012543817&text=${message}`} style={{fontSize:'18px'}} className="btn btn-primary text-white">Contactar con ventas</a>
+                    </div>
+                    <br></br>
 
                 </div>
 

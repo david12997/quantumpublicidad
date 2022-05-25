@@ -14,7 +14,7 @@ class PlaceBillboardDataController extends Controller
      */
     public function index()
     {
-        $place_billboards = PlaceBillboardData::paginate(20);
+        $place_billboards = PlaceBillboardData::paginate(50);
 
         return \response($place_billboards);
     }

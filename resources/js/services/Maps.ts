@@ -39,6 +39,7 @@ export class Maps {
     public AddMarker(options:any, item:any):void{
 
         const media = JSON.parse(item.media);
+        const message =`Hola estoy interesad@ en la valla publicitaria ubicada en: ${item.address}`;
 
         const ContentBillboard = `
 
@@ -96,7 +97,7 @@ export class Maps {
                <b style="color:green;">$ ${ new Intl.NumberFormat().format(Math.ceil(parseInt(item.price)))} COP</b>
                <hr>
                 <div  class="d-grid gap-2">
-                    <div style="font-size:20px;" class="btn btn-success text-white">Contactar con ventas</div>
+                    <a href="https://api.whatsapp.com/send/?phone=573012543817&text=${message}" style="font-size:20px;" class="btn btn-success text-white">Contactar con ventas</a>
                 </div>
 
             </div>

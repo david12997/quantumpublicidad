@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
+
 import { config } from "../../env";
 import { DataApi } from "../../services/DataApi";
 import { CardStory } from "./card-story";
@@ -23,6 +25,7 @@ const SuccessStoriesStyles = styled.div`
         display:flex;
         color: #6a6a6a;
         font-size:20px ;
+        cursor:pointer ;
     }
 
     & .container-stories > .title >.link{
@@ -67,13 +70,18 @@ type PropsSuccessStorie = {
 export const SuccessStories = (props:PropsSuccessStorie):JSX.Element =>{
 
     const [storie, setStorie] = useState<null | any[]>(null);
+    const Navigate = useNavigate();
 
     useEffect(()=>{
 
         const DataStories = new DataApi(config.api.key,config.domain);
         DataStories.GetStories().then(response=>{
 
-            setStorie(response.data.data);
+            (response.data.data !== null || response.data.data !== undefined)
+            ?
+            setStorie(response.data.data.filter((item:any,indice:number)=> item.highlight === 'true' && item))
+            :
+            setStorie(null);
         })
         .catch((error:any)=>console.log(error));
 
@@ -97,7 +105,6 @@ export const SuccessStories = (props:PropsSuccessStorie):JSX.Element =>{
         const media = JSON.parse(item.media);
 
         close.addEventListener('click',()=>modal.classList.add('d-none'));
-        console.log(item);
 
         description.innerHTML = item.description;
         title.innerHTML = item.name;
@@ -113,11 +120,11 @@ export const SuccessStories = (props:PropsSuccessStorie):JSX.Element =>{
 
         <div className="container-stories">
             <div className="title">
-                <b>CASOS DE EXITO </b>
+                <b>CASOS DE EXITO </b> <div onClick={()=>Navigate('/casos')} className="link text-secondary"> Ver campañas</div>
             </div>
             <div className="stories">
                 {
-                    storie === null
+                    (storie === null || storie === undefined)
                     ?
                     <div style={{width:'100%'}} className="d-flex justify-content-center align-items-center">
                         <div style={{width:'250px',height:'250px'}} className="spinner-grow text-secondary" role="status">

@@ -137,7 +137,7 @@ export const Message = ():JSX.Element =>{
                 form.current?.classList.remove('d-none');
                 loader.current?.classList.remove('d-flex');
                 loader.current?.classList.add('d-none');
-                setTitle('Upss algio anda mal intentalo de nuevo');
+                setTitle('Upss algo anda mal intentalo de nuevo');
             }
         })
         .catch((error:any)=>console.log(error));
@@ -156,7 +156,7 @@ export const Message = ():JSX.Element =>{
                     en quantum publicidad estamos para hacer <span className="text-primary">crecer</span> tus negocios e ideas
                 </p>
                 <p style={{width:"100%"}} className="d-flex justify-content-center align-items-center">
-                    <b style={{fontSize:"20px"}}><FontAwesomeIcon style={{fontSize:"25px"}} icon={faWhatsapp}/> 320 123 4567 - 320 123 4567</b>
+                    <b style={{fontSize:"20px"}}><FontAwesomeIcon style={{fontSize:"25px"}} icon={faWhatsapp}/> 301 254 3817 - 301 254 3817</b>
                 </p>
                 <br></br>
                 <div className="img">

@@ -57,7 +57,7 @@ const NavStyle = styled.div`
 
         & .desktop{
 
-            width:600px ;
+            width:690px ;
             display:flex;
             justify-content: space-around ;
             align-items:center ;
@@ -106,6 +106,9 @@ export const Nav = (props:PropsNav):JSX.Element =>{
             </div>
             <div  onClick={()=>Navigate('/servicios')} className={props.page === 'service' ? 'text-dark option-nav' : 'option-nav'}>
                 <b>Servicios</b>
+            </div>
+            <div  onClick={()=>Navigate('/casos')} className={props.page === 'costumer' ? 'text-dark option-nav' : 'option-nav'}>
+                <b>Casos</b>
             </div>
             <div  onClick={()=>Navigate('/contacto')} className={props.page === 'contact' ? 'text-dark option-nav' : 'option-nav'} >
                 <b>Contacto</b>

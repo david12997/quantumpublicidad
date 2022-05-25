@@ -14,7 +14,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $places = Place::paginate(20);
+        $places = Place::paginate(50);
         return \response($places);
     }
 

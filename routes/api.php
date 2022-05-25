@@ -28,12 +28,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['access.api'])->group(function(){
 
-    Route::resource('place-billboards',PlaceBillboardDataController::class);
-    Route::resource('billboard',BillboardController::class);
-    Route::resource('place', PlaceController::class);
-    Route::resource('service',ServiceController::class);
-    Route::resource('storie',StorieController::class);
-    Route::resource('message',MessageCostumerController::class);
+    Route::resource('place-billboards',PlaceBillboardDataController::class)->only(['index']);
+    Route::resource('billboard',BillboardController::class)->only(['index']);
+    Route::resource('place', PlaceController::class)->only(['index']);
+    Route::resource('service',ServiceController::class)->only(['index']);
+    Route::resource('storie',StorieController::class)->only(['index']);
+    Route::resource('message',MessageCostumerController::class)->only(['store']);
 
 });
 

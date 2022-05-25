@@ -75,6 +75,7 @@ type PropsCardService = {
 export const CardService = (props:PropsCardService): JSX.Element =>{
 
     const img = JSON.parse(props.service.media)[0].images.foto1;
+    const message = `Hola estoy interesad@ en el servicio ${props.service.name} de la pagina de quantumpublicidad.com`;
 
     return<CardServiceStyle>
 
@@ -85,7 +86,7 @@ export const CardService = (props:PropsCardService): JSX.Element =>{
             <div className="text-btn">
                 <p style={{marginTop:"7px"}}>{props.service.description}</p>
                 <div className="d-grid gap-2">
-                    <div style={{fontSize:"18px"}} className="btn btn-primary"> Contactar con ventas </div>
+                    <a href={`https://api.whatsapp.com/send/?phone=573012543817&text=${message}`} style={{fontSize:"18px"}} className="btn btn-primary"> Contactar con ventas </a>
                 </div>
 
             </div>

@@ -102,6 +102,11 @@ export const NavMobile = React.forwardRef((props:PropsNavMobile,ref) :JSX.Elemen
             >
                 <b>Servicios</b>
             </div>
+            <div onClick={()=>{ToggleNavMobile(ref,props.setNavMobile,props.status);Navigate('/casos')}}
+                className={props.page === 'costumer'? "btn btn-secondary fs-4 mb-4" :"btn btn-primary fs-4 mb-4"}
+            >
+                <b>Casos</b>
+            </div>
             <div onClick={()=>{ToggleNavMobile(ref,props.setNavMobile,props.status);Navigate('/contacto')}}
                 className={props.page === 'contact'? "btn btn-secondary fs-4 mb-4" :"btn btn-primary fs-4 mb-4"}
             >

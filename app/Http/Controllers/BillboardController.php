@@ -14,7 +14,7 @@ class BillboardController extends Controller
      */
     public function index()
     {
-        $billboard = Billboard::paginate(20);
+        $billboard = Billboard::paginate(50);
         return \response($billboard);
     }
 

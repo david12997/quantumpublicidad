@@ -3,6 +3,7 @@ import styled , {css} from "styled-components";
 
 import { Nav } from "../components/common/nav";
 import { NavMobile } from "../components/common/nav-mobile";
+import { CSRF } from '../services/CSRF';
 
 export const theme = {
 
@@ -24,6 +25,7 @@ export const theme = {
             "about about"
             "cases cases"
             "services services"
+            "ofice ofice"
             "contact contact"
             "footer footer"
     `,
@@ -43,6 +45,13 @@ export const theme = {
             "header header"
             "form form"
             "contact contact"
+            "footer footer"
+
+    `,
+    areas_costumer:`
+            "navbar navbar"
+            "header header"
+            "costumer costumer"
             "footer footer"
 
     `
@@ -81,10 +90,16 @@ const PageStyles = styled.div<PropsPageStyle>`
 
                 grid-template-areas:${ ({theme})=>theme.areas_contact};
             `;
+
+            case 'costumer': return css`
+
+                grid-template-areas:${ ({theme})=>theme.areas_costumer};
+            `;
         }
     }}
 
 `;
+
 
 
 type PropsPage = {
@@ -99,6 +114,10 @@ export const Page = (props:PropsPage):JSX.Element=>{
     const ref = React.createRef();
 
     useEffect(()=>{
+
+        CSRF()
+        .then(response=>response.status !== 204 && console.log('something wrong with csrf-token at them.tsx'))
+        .catch(error=>console.log('something wrong with csrf-token at them.tsx, error: '+error));
 
         return()=>setNavMobile(false);
 
